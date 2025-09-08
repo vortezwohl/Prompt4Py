@@ -17,11 +17,11 @@ class BaseTemplate:
         self._output_language: Any = ''
 
     @abstractmethod
-    def render(self) -> str: ...
+    def render(self, parse_markdown: bool) -> str: ...
 
     @property
     def context(self):
-        return str(self._context)
+        return self._context
 
     @context.setter
     def context(self, value: Any):
@@ -29,7 +29,7 @@ class BaseTemplate:
 
     @property
     def role(self):
-        return str(self._role)
+        return self._role
 
     @role.setter
     def role(self, value: Any):
@@ -37,7 +37,7 @@ class BaseTemplate:
 
     @property
     def instruction(self):
-        return str(self._instruction)
+        return self._instruction
 
     @instruction.setter
     def instruction(self, value: Any):
@@ -45,7 +45,7 @@ class BaseTemplate:
 
     @property
     def objective(self):
-        return str(self._objective)
+        return self._objective
 
     @objective.setter
     def objective(self, value: Any):
@@ -53,7 +53,7 @@ class BaseTemplate:
 
     @property
     def capability(self):
-        return str(self._capability)
+        return self._capability
 
     @capability.setter
     def capability(self, value: Any):
@@ -61,7 +61,7 @@ class BaseTemplate:
 
     @property
     def constraint(self):
-        return str(self._constraint)
+        return self._constraint
 
     @constraint.setter
     def constraint(self, value: Any):
@@ -69,7 +69,7 @@ class BaseTemplate:
 
     @property
     def output_dtype(self):
-        return str(self._output_dtype)
+        return self._output_dtype
 
     @output_dtype.setter
     def output_dtype(self, value: Any):
@@ -77,7 +77,7 @@ class BaseTemplate:
 
     @property
     def output_format(self):
-        return str(self._output_format)
+        return self._output_format
 
     @output_format.setter
     def output_format(self, value: Any):
@@ -85,7 +85,7 @@ class BaseTemplate:
 
     @property
     def output_example(self):
-        return str(self._output_example)
+        return self._output_example
 
     @output_example.setter
     def output_example(self, value: Any):
@@ -93,7 +93,7 @@ class BaseTemplate:
 
     @property
     def output_language(self):
-        return str(self._output_language)
+        return self._output_language
 
     @output_language.setter
     def output_language(self, value: Any):

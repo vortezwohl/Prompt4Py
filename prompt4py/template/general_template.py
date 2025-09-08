@@ -3,7 +3,7 @@ import json
 from prompt4py.template.base_template import BaseTemplate
 
 
-class JsonTemplate(BaseTemplate):
+class GeneralTemplate(BaseTemplate):
     def __init__(self):
         super().__init__()
 
