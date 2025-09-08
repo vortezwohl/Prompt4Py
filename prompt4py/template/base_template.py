@@ -17,7 +17,7 @@ class BaseTemplate:
         self._output_language: Any = None
 
     @abstractmethod
-    def render(self): ...
+    def render(self) -> str: ...
 
     @property
     def context(self):
