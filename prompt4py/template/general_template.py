@@ -8,7 +8,7 @@ class GeneralTemplate(BaseTemplate):
     def __init__(self):
         super().__init__()
 
-    def render(self, parse_markdown: bool = False) -> str:
+    def render(self, parse_markdown: bool = True) -> str:
         _prompt_object = {
             'role': self.role,
             'objective': self.objective,
