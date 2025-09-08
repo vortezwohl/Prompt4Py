@@ -1,7 +1,7 @@
 [project]
 name = "prompt4py"
 version = "0.0.1"
-description = ""
+description = "Programmatic prompt template for Python."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
