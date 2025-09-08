@@ -21,7 +21,7 @@ class BaseTemplate:
 
     @property
     def context(self):
-        return self._context
+        return str(self._context)
 
     @context.setter
     def context(self, value: Any):
@@ -29,72 +29,72 @@ class BaseTemplate:
 
     @property
     def role(self):
-        return self._context
+        return str(self._role)
 
     @role.setter
     def role(self, value: Any):
-        self._context = value
+        self._role = value
 
     @property
     def instruction(self):
-        return self._context
+        return str(self._instruction)
 
     @instruction.setter
     def instruction(self, value: Any):
-        self._context = value
+        self._instruction = value
 
     @property
     def objective(self):
-        return self._context
+        return str(self._objective)
 
     @objective.setter
     def objective(self, value: Any):
-        self._context = value
+        self._objective = value
 
     @property
     def capability(self):
-        return self._context
+        return str(self._capability)
 
     @capability.setter
     def capability(self, value: Any):
-        self._context = value
+        self._capability = value
 
     @property
     def constraint(self):
-        return self._context
+        return str(self._constraint)
 
     @constraint.setter
     def constraint(self, value: Any):
-        self._context = value
+        self._constraint = value
 
     @property
     def output_dtype(self):
-        return self._context
+        return str(self._output_dtype)
 
     @output_dtype.setter
     def output_dtype(self, value: Any):
-        self._context = value
+        self._output_dtype = value
 
     @property
     def output_format(self):
-        return self._context
+        return str(self._output_format)
 
     @output_format.setter
     def output_format(self, value: Any):
-        self._context = value
+        self._output_format = value
 
     @property
     def output_example(self):
-        return self._output_example
+        return str(self._output_example)
 
     @output_example.setter
     def output_example(self, value: Any):
-        self._context = value
+        self._output_example = value
 
     @property
     def output_language(self):
-        return self._output_example
+        return str(self._output_language)
 
     @output_language.setter
     def output_language(self, value: Any):
-        self._context = value
+        self._output_language = value
