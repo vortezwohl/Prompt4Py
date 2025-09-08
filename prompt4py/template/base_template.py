@@ -5,16 +5,16 @@ from typing_extensions import Any
 class BaseTemplate:
     def __init__(self):
         super().__init__()
-        self._context: Any = None
-        self._role: Any = None
-        self._instruction: Any = None
-        self._objective: Any = None
-        self._capability: Any = None
-        self._constraint: Any = None
-        self._output_dtype: Any = None
-        self._output_format: Any = None
-        self._output_example: Any = None
-        self._output_language: Any = None
+        self._context: Any = ''
+        self._role: Any = ''
+        self._instruction: Any = ''
+        self._objective: Any = ''
+        self._capability: Any = ''
+        self._constraint: Any = ''
+        self._output_dtype: Any = ''
+        self._output_format: Any = ''
+        self._output_example: Any = ''
+        self._output_language: Any = ''
 
     @abstractmethod
     def render(self) -> str: ...
