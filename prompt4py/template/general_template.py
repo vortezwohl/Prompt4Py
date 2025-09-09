@@ -1,14 +1,17 @@
 import json
 
 from prompt4py.template.base_template import BaseTemplate
-from prompt4py.util.json2markdown import json_to_markdown
+from prompt4py.util.json2markdown import json_to_markdown, json_replace
+
+_VAR_LEFT = '{{'
+_VAR_RIGHT = '}}'
 
 
 class GeneralTemplate(BaseTemplate):
     def __init__(self):
         super().__init__()
 
-    def render(self, parse_markdown: bool = True) -> str:
+    def render(self, parse_markdown: bool = True, **kwargs) -> str:
         _prompt_object = {
             'role': self.role,
             'objective': self.objective,
@@ -24,6 +27,12 @@ class GeneralTemplate(BaseTemplate):
         for k in list(_prompt_object.keys()):
             if len(str(_prompt_object[k])) < 1:
                 del _prompt_object[k]
+        for k, v in kwargs.items():
+            if not isinstance(k, str):
+                k = str(k)
+            if not isinstance(v, str):
+                v = str(v)
+            _prompt_object = json_replace(_prompt_object, f'{_VAR_LEFT}{k}{_VAR_RIGHT}', v)
         if parse_markdown:
             return json_to_markdown(json_data=_prompt_object)
         return json.dumps(_prompt_object, ensure_ascii=False)
