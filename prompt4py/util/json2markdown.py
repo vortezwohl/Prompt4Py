@@ -1,4 +1,4 @@
-def json_to_markdown(json_data: dict | list | None, indent: int = 0):
+def json_to_markdown(json_data: dict | list, indent: int = 0) -> str:
     md = []
     current_indent = '  ' * max(indent - 1, 0)
     next_indent = '  ' * max(indent, 0)
@@ -23,3 +23,15 @@ def json_to_markdown(json_data: dict | list | None, indent: int = 0):
             return "null"
         return str(json_data).lower() if isinstance(json_data, bool) else str(json_data)
     return '\n'.join(md)
+
+
+def json_replace(json_data: dict | list, _old: str, _new: str) -> dict | list | str:
+    if isinstance(json_data, dict):
+        for key, value in json_data.items():
+            json_data[key] = json_replace(value, _old, _new)
+    elif isinstance(json_data, list):
+        for i, item in enumerate(json_data):
+            json_data[i] = json_replace(item, _old, _new)
+    elif isinstance(json_data, str):
+        return json_data.replace(_old, _new)
+    return json_data
