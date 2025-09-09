@@ -1,10 +1,12 @@
 import json
+import re
 
 from prompt4py.template.base_template import BaseTemplate
 from prompt4py.util.json2markdown import json_to_markdown, json_replace
 
 _VAR_LEFT = '{{'
 _VAR_RIGHT = '}}'
+_VAR_PATTERN = re.compile(r'{{(\w+)}}')
 
 
 class GeneralTemplate(BaseTemplate):
@@ -33,6 +35,11 @@ class GeneralTemplate(BaseTemplate):
             if not isinstance(v, str):
                 v = str(v)
             _prompt_object = json_replace(_prompt_object, f'{_VAR_LEFT}{k}{_VAR_RIGHT}', v)
+        json_str = json.dumps(_prompt_object, ensure_ascii=False)
+        _vars_left_to_fill = _VAR_PATTERN.findall(json_str)
+        if len(_vars_left_to_fill) > 0:
+            _vars_str = ', '.join([f'"{_}"' for _ in _vars_left_to_fill])
+            raise TypeError(f'render() missing {len(_vars_left_to_fill)} required arguments: {_vars_str}')
         if parse_markdown:
             return json_to_markdown(json_data=_prompt_object)
-        return json.dumps(_prompt_object, ensure_ascii=False)
+        return json_str
