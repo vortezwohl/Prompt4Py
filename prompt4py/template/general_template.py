@@ -16,9 +16,9 @@ class GeneralTemplate(BaseTemplate):
             'constraint': self.constraint,
             'capability': self.capability,
             'context': self.context,
+            'output_language': self.output_language,
             'output_datatype': self.output_dtype,
             'output_format': self.output_format,
-            'output_language': self.output_language,
             'output_example': self.output_example
         }
         for k in list(_prompt_object.keys()):
