@@ -1,5 +1,6 @@
 import json
 import re
+import time
 
 from prompt4py.template.base_template import BaseTemplate
 from prompt4py.util.json2markdown import json_to_markdown, json_replace
@@ -15,6 +16,7 @@ class GeneralTemplate(BaseTemplate):
 
     def render(self, markdown: bool = True, **kwargs) -> str:
         _prompt_object = {
+            '_timestamp': time.perf_counter(),
             'role': self.role,
             'objective': self.objective,
             'instruction': self.instruction,
