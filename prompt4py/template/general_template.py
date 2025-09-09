@@ -16,17 +16,17 @@ class GeneralTemplate(BaseTemplate):
 
     def render(self, markdown: bool = True, **kwargs) -> str:
         _prompt_object = {
-            '_timestamp': time.perf_counter(),
-            'role': self.role,
-            'objective': self.objective,
-            'instruction': self.instruction,
-            'constraint': self.constraint,
-            'capability': self.capability,
-            'context': self.context,
-            'output_language': self.output_language,
-            'output_datatype': self.output_dtype,
-            'output_format': self.output_format,
-            'output_example': self.output_example
+            '_timestamp'.upper(): f'[{time.perf_counter()}]',
+            'role'.upper(): self.role,
+            'objective'.upper(): self.objective,
+            'instruction'.upper(): self.instruction,
+            'constraint'.upper(): self.constraint,
+            'capability'.upper(): self.capability,
+            'context'.upper(): self.context,
+            'output_language'.upper(): self.output_language,
+            'output_datatype'.upper(): self.output_dtype,
+            'output_format'.upper(): self.output_format,
+            'output_example'.upper(): self.output_example
         }
         for k in list(_prompt_object.keys()):
             if len(str(_prompt_object[k])) < 1:
