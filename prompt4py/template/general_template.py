@@ -13,7 +13,7 @@ class GeneralTemplate(BaseTemplate):
     def __init__(self):
         super().__init__()
 
-    def render(self, parse_markdown: bool = True, **kwargs) -> str:
+    def render(self, markdown: bool = True, **kwargs) -> str:
         _prompt_object = {
             'role': self.role,
             'objective': self.objective,
@@ -40,6 +40,6 @@ class GeneralTemplate(BaseTemplate):
         if len(_vars_left_to_fill) > 0:
             _vars_str = ', '.join([f'"{_}"' for _ in _vars_left_to_fill])
             raise TypeError(f'render() missing {len(_vars_left_to_fill)} required arguments: {_vars_str}')
-        if parse_markdown:
+        if markdown:
             return json_to_markdown(json_data=_prompt_object)
         return json_str
