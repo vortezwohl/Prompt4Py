@@ -26,7 +26,9 @@ class GeneralTemplate(BaseTemplate):
             'output_language'.upper(): self.output_language,
             'output_datatype'.upper(): self.output_dtype,
             'output_format'.upper(): self.output_format,
-            'output_example'.upper(): self.output_example
+            'output_example'.upper(): json.dumps(self.output_example, ensure_ascii=False)
+            if (isinstance(self.output_example, list) or isinstance(self.output_example, dict))
+            else str(self.output_example)
         }
         for k in list(_prompt_object.keys()):
             if len(str(_prompt_object[k])) < 1:
